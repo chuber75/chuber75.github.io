@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Valentine’s Day</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --card: rgba(9, 9, 22, 0.96);
+      --border: rgba(255, 255, 255, 0.12);
+      --accent: #ff4b81;
+      --accent-soft: rgba(255, 75, 129, 0.16);
+      --text-main: #f8f5ff;
+      --text-muted: #b9b4d5;
+      --pill-bg: rgba(248, 245, 255, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        -apple-system, "Segoe UI", sans-serif;
+      color: var(--text-main);
+      background:
+        radial-gradient(circle at top, #3c214d 0, transparent 55%),
+        radial-gradient(circle at bottom, #0b1220 0, #050816 55%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(40px);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 0;
+      mix-blend-mode: screen;
+    }
+
+    .orb.orb-1 {
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, #ff4b81, transparent 60%);
+      top: -60px;
+      left: -40px;
+      animation: floatOrb1 14s ease-in-out infinite alternate;
+    }
+
+    .orb.orb-2 {
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, #8b5cf6, transparent 65%);
+      bottom: -80px;
+      right: -40px;
+      animation: floatOrb2 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatOrb1 {
+      0%   { transform: translate(0, 0); opacity: 0.8; }
+      100% { transform: translate(30px, 40px); opacity: 0.4; }
+    }
+    @keyframes floatOrb2 {
+      0%   { transform: translate(0, 0); opacity: 0.7; }
+      100% { transform: translate(-30px, -30px); opacity: 0.5; }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 640px;
+      border-radius: 24px;
+      padding: 24px 22px 22px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent),
+        var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(22px);
+      box-shadow:
+        0 22px 50px rgba(0, 0, 0, 0.72),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+    }
+
+    @media (min-width: 720px) {
+      .card {
+        padding: 28px 30px 26px;
+      }
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 6px 13px;
+      background: var(--pill-bg);
+      border: 1px solid rgba(248, 245, 255, 0.12);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(255, 75, 129, 0.9);
+    }
+
+    h1 {
+      font-size: 26px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .divider {
+      height: 1px;
+      border-radius: 999px;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.32),
+        rgba(255, 255, 255, 0)
+      );
+      opacity: 0.55;
+      margin: 12px 0 18px;
+    }
+
+    .message-block {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-main);
+      padding: 16px 16px 12px;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at top left, rgba(255, 75, 129, 0.16), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.12), transparent 50%),
+        rgba(2, 6, 23, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .message-block p + p {
+      margin-top: 8px;
+    }
+
+    .signature-row {
+      margin-top: 18px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .signature {
+      text-align: right;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .signature span.name {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .meta {
+      margin-top: 10px;
+      font-size: 11px;
+      color: rgba(185, 180, 213, 0.72);
+      text-align: right;
+    }
+
+    .heart-orbit {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin: 18px auto 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 245, 255, 0.16);
+      background:
+        radial-gradient(circle at 30% 0, rgba(255, 255, 255, 0.16), transparent 60%),
+        radial-gradient(circle at 80% 90%, rgba(255, 75, 129, 0.38), transparent 70%),
+        linear-gradient(145deg, #050816, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+      overflow: hidden;
+    }
+
+    .heart-orbit::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: inherit;
+      border: 1px dashed rgba(248, 245, 255, 0.16);
+      opacity: 0.65;
+    }
+
+    .heart-core {
+      position: relative;
+      font-size: 30px;
+      filter: drop-shadow(0 0 18px rgba(255, 75, 129, 0.9));
+      animation: pulseHeart 1.9s ease-in-out infinite;
+    }
+
+    @keyframes pulseHeart {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50%      { transform: scale(1.12); opacity: 0.86; }
+    }
+
+    .cta-block {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      background: radial-gradient(circle at 0 0, #f97373, #ec4899);
+      box-shadow: 0 14px 30px rgba(236, 72, 153, 0.45);
+      transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 18px 35px rgba(236, 72, 153, 0.6);
+    }
+
+    .btn:active {
+      transform: translateY(0) scale(0.97);
+      box-shadow: 0 10px 24px rgba(236, 72, 153, 0.45);
+    }
+
+    .btn-icon {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <main class="card">
+    <div class="pill">
+      <span class="pill-dot"></span>
+      <span>Happy Valentine’s Day Gorgeous</span>
+    </div>
+
+    <h1>Yoooooooooooohoooooooooo pookie</h1>
+
+    <p class="subtitle">
+      I know this is not how we'd ideally want to celebrate Valentine’s Day, but we will see each other soon.
+      I really miss you. It has been far too long :(
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="message-block">
+      <p>
+        I wanted to emphasize how amazing you are not just as a
+        girlfriend, but as a friend. This semester has been insanely
+        difficult to navigate through and you are kicking ass. You've
+        been dealing with an insane course load, random BS with your
+        roommates, all while also supporting Katie through tough times
+        too. I could not be more proud of the woman I've seen you become
+        over the course of our relationship, and I cannot wait to see what
+        the future holds for us. ❤
+      </p>
+      <p>
+        I wish you were right here next to me. Slowly but surely we are
+        kicking long‑distance's ass and we are going to be better off for
+        it in the long run. Sorry it sucks for now :(
+      </p>
+      <p>
+        The fact that this is our third Valentine’s Day together already
+        blows my mind. Time is flying by, and as we continue to get older,
+        it is only going to keep going by faster. I have had so many incredible
+        memories with you over the years such as your first birthday with us together
+        celebrating in UV, the first spring break, showing you Atlanta by taking
+        you to see the Braves, the Falcons, and the zoo, various beach trips with
+        you and Lily, random moments like jumping over the fence to meet you at
+        the party with Alex, you not wanting to crawl out of the car when we were
+        at the pier, living with you at the pier, and so much more. All of these 
+        momentshave shaped us to be closer than ever before,
+        even if we are not always in physical proximity with each other.
+      </p>
+
+      <div class="signature-row">
+        <div class="signature">
+          I love you so much,<br />
+          <span class="name">Char ❤</span>
+          <br>
+          P.S. Happy early birthday!!!
+        </div>
+      </div>
+    </div>
+
+    <div class="heart-orbit">
+      <div class="heart-core">❤</div>
+    </div>
+
+    <div class="cta-block">
+      <p>
+        Every time you open this, imagine I just sent you a
+        “good morning gorgeous girl, love of my life” text.
+        One day, we’ll always be together and won’t need virtual kisses.
+      </p>
+      <button class="btn" onclick="alert('You just received 1 virtual kiss (out of many). 💋')">
+        <span class="btn-icon">➤</span>
+        <span>Redeem one kiss</span>
+      </button>
+    </div>
+  </main>
+</body>
+</html>
+
